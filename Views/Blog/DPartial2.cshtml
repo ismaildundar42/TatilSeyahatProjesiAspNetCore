@@ -1,0 +1,14 @@
+﻿@model List<TatilSeyahatProjesiCore.Models.Siniflar.SonYorumDto>
+
+<div class="comments">
+    <h3 style="font-weight:bold; font-size:18px;">SON YORUMLAR</h3>
+    <ul class="list-unstyled">
+        @foreach (var y in Model)
+        {
+            <li style="margin-bottom:8px;">
+                <strong>@y.TakmaAd</strong> on
+                <a href="/Blog/BlogDetay/@y.BlogId">@((y.BlogBaslik.Length > 25) ? y.BlogBaslik.Substring(0, 25) + "..." : y.BlogBaslik)</a>
+            </li>
+        }
+    </ul>
+</div>

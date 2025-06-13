@@ -1,0 +1,35 @@
+﻿@using TatilSeyahatProjesiCore.Models.Siniflar
+@model List<SoruCevap>
+@{
+    ViewData["Title"] = "SSSListesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h1>SSS Listesi</h1>
+<br />
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>ID</th>
+        <th>SORU</th>
+        <th>CEVAP</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+
+    @foreach(var x in Model)
+    {
+      <tr>
+            <td>@x.Id</td>
+            <td>@x.Soru</td>
+            <td>@x.Cevap</td>
+            <td><a href="/Admin/SSSSil/@x.Id" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Admin/SSSGuncelle/@x.Id" class="btn btn-primary">Güncelle</a></td>
+      </tr>
+    }
+
+
+</table>
+
+<a href="/Admin/SSSEkle/" class="btn btn-success">Yeni Sorular Ekle</a>

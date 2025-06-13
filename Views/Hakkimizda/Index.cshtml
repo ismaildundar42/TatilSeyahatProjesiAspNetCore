@@ -1,0 +1,108 @@
+﻿@using TatilSeyahatProjesiCore.Models.Siniflar
+@model List<Hakkimizda>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AnaTema.cshtml";
+}
+
+<style>
+    .about-wrapper {
+        background-color: #fdfdfd;
+        padding: 40px 0;
+    }
+
+    .about-container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 0 20px;
+    }
+
+    .about-title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #8B0000;
+        margin-bottom: 30px;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        text-align: center;
+    }
+
+    .about-card {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 35px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .about-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+
+    .about-content {
+        font-size: 18px;
+        line-height: 1.8;
+        color: #333;
+        font-family: 'Segoe UI', Tahoma, sans-serif;
+        text-align: justify;
+        width: 100%;
+    }
+
+        .about-content p {
+            margin-bottom: 18px;
+        }
+
+        .about-content h1,
+        .about-content h2,
+        .about-content strong {
+            color: #8B0000;
+            font-weight: bold;
+        }
+
+        .about-content a {
+            color: #0077b5;
+            text-decoration: none;
+        }
+
+            .about-content a:hover {
+                text-decoration: underline;
+            }
+
+    <style >
+        @("media (max-width: 768px)") {
+        .about-content
+
+    {
+        font-size: 17px;
+    }
+
+    }
+</style>
+
+</style>
+
+<div class="about-wrapper">
+    <div class="about-container">
+        <h2 class="about-title">Hakkımızda</h2>
+
+        @foreach (var x in Model)
+        {
+            <div class="about-card">
+                <img src="@x.FotoUrl"
+                     alt="Hakkımızda Görseli"
+                     style="max-width: 80%; height: 350px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ddd;" />
+
+                <div class="about-content">
+                    @Html.Raw(x.Aciklama)
+                </div>
+            </div>
+        }
+    </div>
+</div>

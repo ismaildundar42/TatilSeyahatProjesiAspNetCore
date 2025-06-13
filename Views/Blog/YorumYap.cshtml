@@ -1,0 +1,14 @@
+﻿@model TatilSeyahatProjesiCore.Models.Siniflar.Yorumlar
+
+<div class="content-form">
+	<h3>Bir Yorum Bırakın !</h3>
+	<form method="post" asp-controller="Blog" asp-action="YorumYap">
+		<input type="hidden" name="BlogId" value="@Model.BlogId" />
+		<input type="text" name="TakmaAd" placeholder="Takma Ad" required />
+		<input type="text" name="Mail" placeholder="Mail" required />
+		<textarea name="YorumIcerik" placeholder="Yorumunuz" required></textarea>
+		<input type="submit" value="Yorum Yap" />
+	</form>
+</div>
+
+

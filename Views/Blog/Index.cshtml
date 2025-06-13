@@ -1,0 +1,213 @@
+﻿@model TatilSeyahatProjesiCore.Models.Siniflar.BlogYorum
+
+@{
+	Layout = null;
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Easy Trip | Tatil Seyahat Blogum</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+	<!-- CSS -->
+	<link href="/web2/css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href="/web2/css/style.css" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="/web/css/style.css" type="text/css" media="all" />
+	<link href="/web/css/slider.css" rel="stylesheet" type="text/css" media="all" />
+
+	<!-- Fonts -->
+	<link href='http://fonts.googleapis.com/css?family=Oswald:100,400,300,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,300italic' rel='stylesheet' type='text/css'>
+
+	<!-- JS -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="/web/js/responsiveslides.min.js"></script>
+	<script src="/web/js/move-top.js"></script>
+	<script src="/web/js/easing.js"></script>
+
+	<!-- Navbar Hover Style -->
+	<style>
+		#nav li {
+			position: relative;
+		}
+
+			#nav li ul.subs {
+				display: none;
+				position: absolute;
+				top: 120%;
+				left: 0;
+				background-color: #2E9AFE;
+				z-index: 999;
+				list-style: none;
+				margin: 0;
+				padding: 0;
+				min-width: 160px;
+			}
+
+			#nav li:hover ul.subs {
+				display: block;
+			}
+	</style>
+
+	<script type="application/x-javascript">
+		addEventListener("load", function () {
+		setTimeout(hideURLbar, 0);
+		}, false);
+		function hideURLbar() {
+		window.scrollTo(0, 1);
+		}
+	</script>
+
+	<script>
+		$(function () {
+		$("#slider1").responsiveSlides({
+		auto: true,
+		nav: true,
+		speed: 500,
+		namespace: "callbacks",
+		});
+
+		$(".scroll").click(function (event) {
+		event.preventDefault();
+		$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 900);
+		});
+		});
+	</script>
+</head>
+<body>
+	<div class="header">
+		<div class="wrap">
+			<div class="logo"><a href="index.html"><img src="/web/images/logo.png" alt="" /></a></div>
+			<div class="con-right">
+				<div class="grid1-l-img">
+					<img src="/web/images/contact.png" alt="">
+				</div>
+				<div class="grid1-l-desc">
+					<p>WhatsApp : +91 00000-55555</p>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<div class="header-bottom">
+		<div class="wrap">
+			<ul id="nav">
+				<li><a href="/Default/Index/">Ana Sayfa</a></li>
+				<li><a class="hsubs" href="/Blog/Index">Blogum</a></li>
+				@*                 <li>
+                    <a class="hsubs" href="destinations.html">Rehber</a>
+                    <ul class="subs">
+                        <li><a href="/Home/Index/">Oteller</a></li>
+                        <li><a href="/Home/Index/">Restorantlar</a></li>
+                        <li><a href="#">Müzeler</a></li>
+                    </ul>
+                </li> *@
+				<li><a href="/Hakkimizda/Index">Hakkımızda</a></li>
+				<li><a href="/SSS/Index/">SSS</a></li>
+				<li><a href="/Iletisim/Index/">İletişim</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="content">
+		<br />
+		<br />
+		<div class="container">
+			<div class="col-md-8 single-main">
+				@foreach (var x in Model.BlogDeger1)
+				{
+					<div class="single-grid mb-4">
+						<img src="@x.BlogResim" class="img-fluid mb-2" alt="" />
+
+
+						<div style="margin-bottom: 20px; padding: 12px 18px; background-color: #fff8f8; border-left: 4px solid #8B0000; border-radius: 6px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);">
+							<a href="/Blog/BlogDetay/@x.BlogId" style="font-size: 22px; font-weight: bold; color: #8B0000; text-decoration: none; font-family: 'Segoe UI', Tahoma, sans-serif;">
+								@x.Baslik
+							</a>
+							<div style="font-size: 14px; color: #777; margin-top: 5px;">
+								🗓️ @x.Tarih.ToString("dd.MM.yyyy")
+							</div>
+						</div>
+
+
+
+						<p>
+							@(
+														x.Aciklama.Length > 200
+														? x.Aciklama.Substring(0, 200) + "..."
+														: x.Aciklama
+														)
+							<a href="/Blog/BlogDetay/@x.BlogId">Devamını Oku</a>
+						</p>
+					</div>
+				}
+			</div>
+			<!-- SAYFALAMA -->
+			@using X.PagedList.Mvc.Core
+			@using X.PagedList
+
+			<div style="margin-top: 20px;">
+				@Html.PagedListPager((IPagedList)Model.BlogDeger1, page => Url.Action("Index", new { page }),
+									new PagedListRenderOptions
+				{
+					UlElementClasses = new[] { "pagination", "justify-content-center" },
+					LiElementClasses = new[] { "page-item" },
+					PageClasses = new[] { "page-link" }
+				})
+			</div>
+
+
+			<div class="col-md-4 side-content">
+				<div class="recent">
+					<h3 style="font-weight: bold; font-size: 22px; color: #333;">SON BLOGLAR</h3>
+					<ul class="list-unstyled">
+						@foreach (var x in Model.BlogDeger2)
+						{
+							<li style="margin-bottom: 10px;">
+								<a href="/Blog/BlogDetay/@x.BlogId">@x.Baslik</a>
+							</li>
+						}
+					</ul>
+				</div>
+
+				<div class="comments">
+					<h3 style="font-weight: bold; font-size: 22px; color: #333;">SON YORUMLAR</h3>
+					<ul class="list-unstyled">
+						@foreach (var y in Model.YorumDeger2)
+						{
+							<li style="margin-bottom: 8px;">
+								<strong>@y.TakmaAd</strong> on
+								<a href="/Blog/BlogDetay/@y.BlogId">
+									@((y.BlogBaslik.Length > 25) ? y.BlogBaslik.Substring(0, 25) + "..." : y.BlogBaslik)
+								</a>
+							</li>
+						}
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="clearfix"></div>
+		</div>
+	</div>
+
+	<div class="footer-bottom">
+		<div class="wrap">
+			<div class="copy">
+				<p>
+					&copy; 2025 Easy-Trip. Tüm Hakları Saklıdır. |
+					Design by <a href="http://w3layouts.com">W3Layouts</a> |
+					Code by <a href="https://www.linkedin.com/in/ismail-d%C3%BCndar-1844b0250/" target="_blank">
+						İsmail Dündar (LinkedIn)
+						<img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width:16px; height:16px; margin-left:4px; vertical-align:middle;" />
+					</a>
+				</p>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

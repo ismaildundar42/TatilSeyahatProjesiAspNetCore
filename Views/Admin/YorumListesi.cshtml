@@ -1,0 +1,49 @@
+﻿@using TatilSeyahatProjesiCore.Models.Siniflar
+@model List<Yorumlar>
+@{
+	ViewData["Title"] = "YorumListesi";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h1>Yorum Listesi</h1>
+<br />
+<table class="table table-bordered">
+
+	<tr>
+		<th>ID</th>
+		<th>TAKMA AD</th>
+		<th>MAİL</th>
+		<th>YORUM İÇERİK</th>
+		<th>BLOG</th>
+		<th>SİL</th>
+	</tr>
+
+	@foreach (var x in Model)
+	{
+		<tr>
+			<td>@x.YorumId</td>
+			<td>@x.TakmaAd</td>
+			<td>@x.Mail</td>
+			<td>@x.YorumIcerik</td>
+			<td>@x.Blog.Baslik</td>
+			<td>
+				<a href="/Admin/YorumSil/@x.YorumId?sayfa=@ViewBag.SuankiSayfa" class="btn btn-danger">Sil</a>
+			</td>
+
+		</tr>
+	}
+
+</table>
+
+<nav aria-label="Yorum sayfalama">
+	<ul class="pagination">
+
+		@for (int i = 1; i <= (int)ViewBag.ToplamSayfa; i++)
+		{
+			<li class="page-item @(i == ViewBag.SuankiSayfa ? "active" : "")">
+				<a class="page-link" href="/Admin/YorumListesi?sayfa=@i">@i</a>
+			</li>
+		}
+
+	</ul>
+</nav>

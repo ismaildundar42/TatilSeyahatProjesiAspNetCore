@@ -1,0 +1,30 @@
+﻿@model TatilSeyahatProjesiCore.Models.Siniflar.Blog
+@{
+	ViewData["Title"] = "BlogGetir";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h1>Blog Güncelleme Sayfası</h1>
+<br />
+@using (Html.BeginForm("BlogGuncelle", "Admin", FormMethod.Post))
+{
+	@Html.HiddenFor(x => x.BlogId)
+	<label>Blog Id</label>
+	@Html.TextBoxFor(x => x.BlogId, new { @class = "form-control", @disabled = "disabled" })
+	<br />
+	<label>Başlık</label>
+	@Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+	<br />
+	<label>Tarih</label>
+	@Html.TextBoxFor(x => x.Tarih, new { @class = "form-control" })
+	<br />
+	<label>Bloğun Resmi</label>
+	@Html.TextBoxFor(x => x.BlogResim, new { @class = "form-control" })
+	<br />
+	<label>Blog Açıklama</label>
+	@Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control", rows = "5", style = "width:100%;" })
+	<br />
+	<br />
+
+	<button class="btn btn-success">Blog Güncelle !</button>
+}

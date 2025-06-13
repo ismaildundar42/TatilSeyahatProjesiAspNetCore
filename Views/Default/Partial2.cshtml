@@ -1,0 +1,82 @@
+﻿@using TatilSeyahatProjesiCore.Models.Siniflar
+@model List<Blog>
+
+<style>
+    .top10-box {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+        .top10-box h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #8B0000;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+    .top10-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .top10-list li {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            font-size: 16px;
+        }
+
+            .top10-list li span {
+                font-weight: bold;
+                color: #8B0000;
+                margin-right: 10px;
+                min-width: 20px;
+            }
+
+            .top10-list li a {
+                color: #333;
+                text-decoration: none;
+                transition: color 0.2s ease;
+            }
+
+                .top10-list li a:hover {
+                    color: #a62c4f;
+                }
+
+    .link1 {
+        display: inline-block;
+        margin-top: 15px;
+        color: #a62c4f;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.2s ease;
+    }
+
+        .link1:hover {
+            color: #8B0000;
+        }
+
+</style>
+
+
+
+<div class="top10-box">
+    <h4>Bu Haftanın Top 10'u</h4>
+    <ul class="top10-list">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <li><span>@(i + 1).</span><a href="/Blog/BlogDetay/@Model[i].BlogId">@Model[i].Baslik</a></li>
+        }
+    </ul>
+    <a href="/Blog/Index/" class="link1">Tümünü Gör</a>
+</div>
+
+
+

@@ -1,0 +1,27 @@
+﻿@model TatilSeyahatProjesiCore.Models.Siniflar.Blog
+@{
+	ViewData["Title"] = "YeniBlogEkle";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h1>Yeni Blog Ekle</h1>
+<br />
+
+<form class="form-group" method="post">
+
+	<label>Başlık</label>
+	@Html.TextBoxFor(x => x.Baslik, new { @class = "form-control" })
+	<br />
+	<label>Tarih</label>
+	@Html.TextBoxFor(x => x.Tarih, new { @class = "form-control", type = "date" })
+	<br />
+	<label>Bloğun Resmi</label>
+	@Html.TextBoxFor(x => x.BlogResim, new { @class = "form-control" })
+	<br />
+	<label>Blog Açıklama</label>
+	@Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control", rows = "5", style = "width:100%;" })
+	<br />
+	<br />
+
+	<button class="btn btn-success">Bloğu Ekle !</button>
+</form>

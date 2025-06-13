@@ -1,0 +1,33 @@
+﻿@using TatilSeyahatProjesiCore.Models.Siniflar
+@model List<Hakkimizda>
+@{
+    ViewData["Title"] = "HakkimizdaListesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h1>Hakkımızda Listesi</h1>
+<br />
+<table class="table table-bordered">
+
+    <tr>
+        <th>ID</th>
+        <th>FOTO URL</th>
+        <th>AÇIKLAMA</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+    </tr>
+
+    @foreach(var x in Model)
+    {
+       <tr>
+            <td>@x.HakkimizdaId</td>
+            <td>@x.FotoUrl</td>
+            <td>@x.Aciklama</td>
+            <td><a href="/Admin/HakkimizdaSil/@x.HakkimizdaId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Admin/HakkimizdaGetir/@x.HakkimizdaId" class="btn btn-primary">Güncelle</a></td>
+       </tr>
+    }
+
+</table>
+
+<a href="/Admin/HakkimizdaEkle/" class="btn btn-success">Hakkımızda Ekle</a>

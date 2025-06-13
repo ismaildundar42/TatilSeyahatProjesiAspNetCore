@@ -1,0 +1,33 @@
+﻿@using TatilSeyahatProjesiCore.Models.Siniflar
+@model List<Blog>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h1>Blog Listesi</h1>
+<br />
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>ID</th>
+        <th>BAŞLIK</th>
+        <th>SİL</th>
+        <th>GÜNCELLE</th>
+        <th>DETAYLAR</th>
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.BlogId</td>
+            <td>@x.Baslik</td>
+            <td><a href="/Admin/BlogSil/@x.BlogId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Admin/BlogGetir/@x.BlogId" class="btn btn-primary">Güncelle</a></td>
+            <td><a href="/Blog/BlogDetay/@x.BlogId" class="btn btn-info">Detaya Git</a></td>
+        </tr>
+    }
+</table>
+
+<a href="/Admin/YeniBlogEkle/" class="btn btn-success">Yeni Blog Ekle</a>

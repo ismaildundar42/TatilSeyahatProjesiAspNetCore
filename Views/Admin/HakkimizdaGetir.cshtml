@@ -1,0 +1,57 @@
+﻿@* @model TatilSeyahatProjesiCore.Models.Siniflar.Hakkimizda
+@{
+    ViewData["Title"] = "HakkimizdaGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Hakkimizda Güncelleme Sayfası</h1>
+
+@using (Html.BeginForm("HakkimizdaGuncelle", "Admin", FormMethod.Post))
+{
+	@Html.HiddenFor(x => x.HakkimizdaId)
+	<label>Hakkımızda Id</label>
+	@Html.TextBoxFor(x => x.HakkimizdaId, new { @class = "form-control", @disabled = "disabled" })
+	<br />
+	<label>Foto Url</label>
+	@Html.TextBoxFor(x => x.FotoUrl, new { @class = "form-control" })
+	<br />
+	<label>Hakkımızda Açıklama</label>
+	@Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control", rows = "5", style = "width:100%;" })
+	<br />
+	<br />
+
+	<button class="btn btn-success">Hakkimizda Güncelle !</button>
+} *@
+
+@model TatilSeyahatProjesiCore.Models.Siniflar.Hakkimizda
+@{
+    ViewData["Title"] = "HakkimizdaGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h1>Hakkımızda Güncelleme Sayfası</h1>
+<br />
+@using (Html.BeginForm("HakkimizdaGuncelle", "Admin", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.HakkimizdaId)
+
+    <label>Hakkımızda Id</label>
+    @Html.TextBoxFor(x => x.HakkimizdaId, new { @class = "form-control", @disabled = "disabled" })
+    <br />
+
+    <label>Foto Url</label>
+    @Html.TextBoxFor(x => x.FotoUrl, new { @class = "form-control" })
+    <br />
+
+    <label>Hakkımızda Açıklama</label>
+    @Html.TextAreaFor(x => x.Aciklama, new { @class = "form-control", rows = "10", id = "aciklamaEditor" })
+    <br />
+
+    <button class="btn btn-success">Hakkımızda Güncelle!</button>
+}
+
+<!-- CKEditor Bağlantısı -->
+<script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('aciklamaEditor');
+</script>

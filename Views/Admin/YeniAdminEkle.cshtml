@@ -1,0 +1,23 @@
+﻿@model TatilSeyahatProjesiCore.Models.Siniflar.Admin
+@{
+    ViewData["Title"] = "YeniAdminEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h1>Yeni Admin Ekle</h1>
+<br />
+
+<form method="post" asp-controller="Admin" asp-action="YeniAdminEkle">
+
+
+    <label>Kullanıcı Adı</label>
+    @Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-control" })
+    <br />
+    <label>Şifre</label>
+    @Html.TextBoxFor(x => x.Sifre, new { @class = "form-control" })
+    
+    <br />
+    <br />
+
+    <button class="btn btn-success">Admini Ekle !</button>
+</form>

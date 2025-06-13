@@ -1,0 +1,67 @@
+﻿@model TatilSeyahatProjesiCore.Models.Siniflar.BlogYorum
+@{
+    ViewData["Title"] = "BlogDetay";
+    Layout = "~/Views/Shared/_AnaTema.cshtml";
+}
+
+<!-- Tasarımı diğer sayfalarla uyumlu hale getiriyoruz -->
+
+<link href="/web2/css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="/web2/css/style.css" rel='stylesheet' type='text/css' />
+<link href="/web/css/style.css" rel="stylesheet" />
+<link href="/web/css/slider.css" rel="stylesheet" />
+
+<div class="content">
+    <div style="height: 20px;"></div>
+    <div class="container py-4">
+        <div class="row">
+            <h2>Blog Detay</h2>
+
+            <!-- Blog Detay Alanı -->
+            <div class="col-12 col-md-8">
+                <div class="single-grid mb-4">
+                    @foreach (var x in Model.BlogDeger1)
+                    {
+                        <img src="@x.BlogResim" class="img-fluid mb-3" style="margin-bottom: 20px;" alt="blog detay" />
+
+                        <div style="font-size: 24px; font-weight: bold; color: #8B0000; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9f9f9; padding: 10px 15px; border-left: 5px solid #8B0000; margin-bottom: 15px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                            @x.Baslik
+                        </div>
+
+                        <div class="p-3 border rounded shadow-sm" style="white-space: pre-line; font-size: 16px; line-height: 1.8; background-color: #fff;">
+                            @x.Aciklama
+                        </div>
+                    }
+                </div>
+
+                <br />
+                <br />
+
+                <!-- yorum Bilgisi partial view burada çağırılacak -->
+                @Html.Partial("YorumYap", new TatilSeyahatProjesiCore.Models.Siniflar.Yorumlar { BlogId = Model.BlogDeger1.FirstOrDefault().BlogId })
+
+                <!-- Yorumlar -->
+                @foreach (var x in Model.YorumDeger1)
+                {
+                    <ul class="comment-list">
+                        <li>
+                            <img src="/web2/images/avatar.png" class="img-responsive" alt="avatar">
+                            <div class="desc">
+                                <p>@x.TakmaAd - @x.Mail</p>
+                                <br />
+                                <p>@x.YorumIcerik</p>
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    </ul>
+                }
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-12 col-md-4">
+                @await Html.PartialAsync("DPartial1", Model.BlogDeger2)
+                @await Html.PartialAsync("DPartial2", Model.YorumDeger2)
+            </div>
+        </div>
+    </div>
+</div>

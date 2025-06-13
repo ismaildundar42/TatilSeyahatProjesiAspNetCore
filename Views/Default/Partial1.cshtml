@@ -1,0 +1,17 @@
+﻿@using TatilSeyahatProjesiCore.Models.Siniflar
+@model List<Blog>
+
+
+<div class="trip-cards">
+
+    @foreach (var x in Model)
+    {
+        <div class="trip-card">
+            <img src="@x.BlogResim" alt="Resim 1">
+            <h4>@x.Baslik</h4>
+            <div class="price">@x.Tarih.ToString("dd.MM.yyyy")</div>
+            <p>@(x.Aciklama?.Split('.').FirstOrDefault() + ".")</p>
+            <a href="/Blog/BlogDetay/@x.BlogId" class="read-more">Devamını Oku >></a>
+        </div>
+    }
+</div>

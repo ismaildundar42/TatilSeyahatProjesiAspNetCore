@@ -1,0 +1,21 @@
+﻿@model TatilSeyahatProjesiCore.Models.Siniflar.SoruCevap
+@{
+    ViewData["Title"] = "SSSEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h1>SSS Ekle</h1>
+<br />
+
+<form class="form-group" method="post">
+
+    <label>Soru</label>
+    @Html.TextBoxFor(x => x.Soru,new {@class = "form-control"})
+    <br />
+    <label>Cevap</label>
+    @Html.TextBoxFor(x => x.Cevap,new {@class = "form-control"})
+    <br />
+    <br />
+
+    <button class="btn btn-success">Soru Cevabı Ekle !</button>
+</form>

@@ -1,0 +1,23 @@
+﻿@model TatilSeyahatProjesiCore.Models.Siniflar.Hakkimizda
+@{
+	ViewData["Title"] = "HakkimizdaEkle";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h1>Hakkimizda Ekleme Sayfası</h1>
+<br />
+<form class="form-group" method="post">
+
+	<label>Hakkımızda Görsel URL</label>
+	<input type="text" name="FotoUrl" class="form-control" />
+	<br />
+	<label>Hakkımızda Açıklama</label>
+    <textarea name="Aciklama" class="form-control" rows="5" style="width:100%;"></textarea>
+	<br />
+
+
+	<button class="btn btn-success">Hakkimizda Ekle</button>
+	
+
+
+</form>
